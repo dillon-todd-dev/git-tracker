@@ -7,8 +7,9 @@ import { TRPCReactProvider } from '@/trpc/react';
 import { ClerkProvider } from '@clerk/nextjs';
 
 export const metadata: Metadata = {
-  title: 'GitTracker',
-  description: 'Track Your Git Projects',
+  title: 'DevLens',
+  description:
+    'Provides a clear view of project progress and deep AI insights into your code',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
