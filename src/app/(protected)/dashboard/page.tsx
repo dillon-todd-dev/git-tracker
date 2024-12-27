@@ -1,5 +1,6 @@
 'use client';
 
+import CommitLog from '@/app/_components/commit-log';
 import useProjects from '@/hooks/use-project';
 import { ExternalLink, Github } from 'lucide-react';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ const DashboardPage = () => {
 
   return (
     <div>
+      {project?.id}
       <div className='flex flex-wrap items-center justify-between gap-y-4'>
         {/* github link */}
         <div className='w-fit rounded-md bg-primary px-4 py-3'>
@@ -42,7 +44,8 @@ const DashboardPage = () => {
         </div>
       </div>
 
-      <div className='mt-8'>CommitLog</div>
+      <div className='mt-8'></div>
+      <CommitLog />
     </div>
   );
 };
