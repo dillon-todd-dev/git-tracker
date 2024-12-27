@@ -25,6 +25,7 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import useProject from '@/hooks/use-project';
 
 const navItems = [
   {
@@ -49,21 +50,10 @@ const navItems = [
   },
 ];
 
-const projects = [
-  {
-    name: 'Project 1',
-  },
-  {
-    name: 'Project 2',
-  },
-  {
-    name: 'Project 3',
-  },
-];
-
 const AppSidebar = () => {
   const pathname = usePathname();
   const { open } = useSidebar();
+  const { projects, selectedProjectId, setSelectedProjectId } = useProject();
 
   return (
     <Sidebar collapsible='icon' variant='floating'>
@@ -101,15 +91,16 @@ const AppSidebar = () => {
         <SidebarGroup>
           <SidebarGroupLabel>Your Projects</SidebarGroupLabel>
           <SidebarMenu>
-            {projects.map((project) => (
+            {projects?.map((project) => (
               <SidebarMenuItem key={project.name}>
                 <SidebarMenuButton asChild>
-                  <div>
+                  <div onClick={() => setSelectedProjectId(project.id)}>
                     <div
                       className={cn(
                         'flex size-6 items-center justify-center rounded-sm border bg-white text-sm text-primary',
                         {
-                          'bg-primary text-white': true,
+                          'bg-primary text-white':
+                            project.id === selectedProjectId,
                         },
                       )}
                     >
